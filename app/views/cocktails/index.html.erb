@@ -1,10 +1,21 @@
-<h2>🍸 Here you can buy delicious cocktails 🍹</h2>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2025&q=80);">
+  <div class="container">
+    <h2> COCKTAILS </h2>
+    <p> Here you can find and create delicious cocktails 🍹 </p>
+    <button type="button" class="btn btn-outline-dark">Create a Cocktail</button>
+  </div>
+</div>
 
-
-<ul>
-  <% @cocktails.each do |cocktail| %>
-    <li> <%= link_to cocktail.name, cocktail_path(cocktail) %> </li>
-  <% end %>
-</ul>
-
+<% @cocktails.each do |cocktail| %>
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="https://images.unsplash.com/photo-1536935338788-846bb9981813?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"><%= cocktail.name %></h5>
+      <% cocktail.doses.each do |dose| %>
+        <p class="card-text"> <%= dose.description %> - <%= dose.ingredient.name%> </p>
+      <% end %>
+      <%= link_to cocktail.name, cocktail_path(cocktail), class:"btn btn-primary"  %>
+    </div>
+  </div>
+<% end %>
 
